@@ -23,7 +23,7 @@ const Header = () => {
             <header id="header">
                 <div className="container">
                     <div className="navbar">
-                        <h4>Redux Shopping Cart</h4>
+                        <h4>Krishi Hrudya</h4>
                         <div className="nav_menu">
                             <div
                                 title="Cart"
