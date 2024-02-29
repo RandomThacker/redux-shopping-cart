@@ -1,0 +1,56 @@
+/* checkout.css */
+
+.checkout-container {
+  max-width: 400px;
+  margin: auto;
+  margin-top: 70px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  text-align: center; /* Center the content */
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+/* OTP Input Styles */
+.otp-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.otp-box {
+  width: 20%;
+  text-align: center;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+button {
+  background-color: #ff8c00; /* Orange color */
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
+
+/* Center the button */
+.button-container {
+  text-align: center;
+  margin-top: 20px;
+}
