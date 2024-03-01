@@ -8,6 +8,10 @@ import { Provider } from "react-redux";
 import store from "./store/store";
 import PhoneOtpForm from "./components/phone-login";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Payment from './pages/Payment';
+import { Form } from './components/Form';
+import OtpVerification from "./components/OtpVerification";
+
 
 const App = () => {
   return (
@@ -22,6 +26,10 @@ const App = () => {
               <Route path="/" element={<Home />} />
               <Route path="/phone-login" element={<PhoneOtpForm />} />
               <Route path="/checkout" element={<Checkout />} />
+              <Route path="/payment" element={<Payment />} />
+              <Route path="/otp" element={<OtpVerification/>} />
+
+
             </Routes>
             <Cart />
             <Footer />
