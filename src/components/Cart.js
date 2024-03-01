@@ -39,19 +39,19 @@ const Cart = () => {
 
   // closing the Cart on clicking outside of it
 
-  // useEffect(() => {
-  //     const outsideClose = (e) => {
-  //         if (e.target.id === 'cart') {
-  //             handleCloseCart(false);
-  //         }
-  //     };
+  useEffect(() => {
+    const outsideClose = (e) => {
+      if (e.target.id === "cart") {
+        handleCloseCart(false);
+      }
+    };
 
-  //     window.addEventListener('click', outsideClose);
+    window.addEventListener("click", outsideClose);
 
-  //     return () => {
-  //         window.removeEventListener('click', outsideClose);
-  //     };
-  // }, [handleCloseCart]);
+    return () => {
+      window.removeEventListener("click", outsideClose);
+    };
+  }, [handleCloseCart]);
 
   const cartQuantity = cartItems.length;
 
@@ -94,7 +94,7 @@ const Cart = () => {
                       <div className="cart_items_info">
                         <h4>{title}</h4>
                         <h3 className="price">
-                          ₹ {itemTotal.toLocaleString()}
+                          <b> ₹ {itemTotal.toLocaleString()}</b>
                         </h3>
                       </div>
 
