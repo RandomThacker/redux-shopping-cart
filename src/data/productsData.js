@@ -4,7 +4,7 @@ const productsData = [
         price: 11500,
         id: 1,
         img: "https://cloudcardz.com/assets/images/cards/krishi_hrudya/product_1.jpg",
-        description: "Krishi Hrudya controllers offer connectivity over 4G wireless mobile technology. It requires a data plan to work and doesn't work on call or SMS",
+        description: "Krishi Hrudya controllers offer connectivity over 4G wireless mobile technology all or SMS",
         quantity: 1,
     },
     {
@@ -12,7 +12,7 @@ const productsData = [
         price: 11500,
         id: 2,
         img: "https://cloudcardz.com/assets/images/cards/krishi_hrudya/product_2.jpg",
-        description: "Krishi Hrudya controllers offer connectivity over 4G wireless mobile technology. It requires a data plan to work and doesn't work on call or SMS",
+        description: "Krishi Hrudya controllers offer connectivity over 4G wireless mobile technology all or SMS",
         quantity: 1,
     },
     {
@@ -20,7 +20,7 @@ const productsData = [
         price: 12000,
         id: 3,
         img: "https://cloudcardz.com/assets/images/cards/krishi_hrudya/product_3.jpg",
-        description: "Krishi Hrudya controllers offer connectivity over 4G wireless mobile technology. It requires a data plan to work and doesn't work on call or SMS",
+        description: "Krishi Hrudya controllers offer connectivity over 4G wireless mobile technology all or SMS",
         quantity: 1,
     },
     {
@@ -28,7 +28,7 @@ const productsData = [
         price: 15000,
         id: 4,
         img: "https://cloudcardz.com/assets/images/cards/krishi_hrudya/product_4.jpg",
-        description: "Krishi Hrudya controllers offer connectivity over 4G wireless mobile technology. It requires a data plan to work and doesn't work on call or SMS",
+        description: "Krishi Hrudya controllers offer connectivity over 4G wireless mobile technology all or SMS",
         quantity: 1,
     },
     {
@@ -36,7 +36,7 @@ const productsData = [
         price: 18000,
         id: 5,
         img: "https://cloudcardz.com/assets/images/cards/krishi_hrudya/product_4.jpg",
-        description: "Krishi Hrudya controllers offer connectivity over 4G wireless mobile technology. It requires a data plan to work and doesn't work on call or SMS",
+        description: "Krishi Hrudya controllers offer connectivity over 4G wireless mobile technology all or SMS",
         quantity: 1,
     },
     {
@@ -44,7 +44,7 @@ const productsData = [
         price: 20000,
         id: 6,
         img: "https://cloudcardz.com/assets/images/cards/krishi_hrudya/product_4.jpg",
-        description: "Krishi Hrudya controllers offer connectivity over 4G wireless mobile technology. It requires a data plan to work and doesn't work on call or SMS",
+        description: "Krishi Hrudya controllers offer connectivity over 4G wireless mobile technology all or SMS",
         quantity: 1,
     },
     {
@@ -52,7 +52,7 @@ const productsData = [
         price: 9500,
         id: 7,
         img: "https://cloudcardz.com/assets/images/cards/krishi_hrudya/product_7.JPG",
-        description: "Krishi Hrudya controllers offer connectivity over 4G wireless mobile technology. It requires a data plan to work and doesn't work on call or SMS",
+        description: "Krishi Hrudya controllers offer connectivity over 4G wireless mobile technology all or SMS",
         quantity: 1,
     },
 ]

@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "./components/Header";
+import Header from "./components/Header.js";
 import Home from "./pages/Home";
 import Footer from "./components/Footer";
 import Cart from "./components/Cart";
