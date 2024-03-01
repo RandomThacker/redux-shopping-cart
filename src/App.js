@@ -6,7 +6,8 @@ import Cart from "./components/Cart";
 import Checkout from "./pages/checkout";
 import { Provider } from "react-redux";
 import store from "./store/store";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";import Payment from './pages/Payment';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Payment from './pages/Payment';
 import { Form } from './components/Form';
 
 
@@ -22,6 +23,8 @@ const App = () => {
               {/* Use Routes instead of Switch */}
               <Route path="/" element={<Home />} />
               <Route path="/checkout" element={<Checkout />} />
+              <Route path="/payment" element={<Payment />} />
+
             </Routes>
             <Cart />
             <Footer />

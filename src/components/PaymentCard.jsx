@@ -54,12 +54,12 @@ export default function PaymentCard() {
   const [cardExpires, setCardExpires] = React.useState("");
 
   return (
-    <Card className="w-full max-w-[24rem]">
+    <Card className="w-[24rem]">
       <CardHeader
         color="gray"
         floated={false}
         shadow={false}
-        className="m-0 grid place-items-center px-4 py-8 text-center"
+        className="m-0 grid place-items-center px-4 py-8 text-center w-[24rem]"
       >
         <div className="mb-4 h-20 p-6 text-white">
           {type === "card" ? (
@@ -73,21 +73,21 @@ export default function PaymentCard() {
           )}
         </div>
         <Typography variant="h5" color="white">
-          Material Tailwind PRO
+          
         </Typography>
       </CardHeader>
       <CardBody>
         <Tabs value={type} className="overflow-visible">
           <TabsHeader className="relative z-0 ">
             <Tab value="card" onClick={() => setType("card")}>
-              Pay using PhonePay
+             PhonePay
             </Tab>
             <Tab value="paypal" onClick={() => setType("paypal")}>
-              Pay with QR Code
+             QR Code
             </Tab>
           </TabsHeader>
           <TabsBody
-            className="!overflow-x-hidden !overflow-y-visible"
+            className="!overflow-x-hidden !overflow-y-visible "
             animate={{
               initial: {
                 x: type === "card" ? 400 : -400,
@@ -208,7 +208,7 @@ export default function PaymentCard() {
                 </Typography>
               </form>
             </TabPanel>
-            <TabPanel value="paypal" className="p-0">
+            <TabPanel value="paypal" className="p-0 w-[24rem]">
               <form className="mt-12 flex flex-col gap-4">
                 <div>
                   <Typography
@@ -221,20 +221,21 @@ export default function PaymentCard() {
                   <Typography
                     variant="small"
                     color="blue-gray"
-                    className="mb-2 font-medium"
+                    className="mb-2 font-medium "
                   >
                     Your Name
                   </Typography>
                   <Input
                     type="name"
                     placeholder="full name"
-                    className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+                    className=" !border-t-blue-gray-200 focus:!border-t-gray-900 w-[24rem]"
+                    style={{width:"24rem"}}
                     labelProps={{
                       className: "before:content-none after:content-none",
                     }}
                   />
 
-                  <Typography
+                  {/* <Typography
                     variant="small"
                     color="blue-gray"
                     className="mb-2 font-medium"
@@ -248,7 +249,7 @@ export default function PaymentCard() {
                     labelProps={{
                       className: "before:content-none after:content-none",
                     }}
-                  />
+                  /> */}
                 </div>
 
                 <div className="my-6">
@@ -259,7 +260,7 @@ export default function PaymentCard() {
                   >
                     Scan the QR Code to Pay the amount
                   </Typography>
-                 <img src="https://www.techopedia.com/wp-content/uploads/2023/03/aee977ce-f946-4451-8b9e-bba278ba5f13.png" alt="" />
+                 <img src="https://www.techopedia.com/wp-content/uploads/2023/03/aee977ce-f946-4451-8b9e-bba278ba5f13.png" style={{width:"200px"}} />
                 </div>
                 <Button size="lg">pay with paypal</Button>
                 <Typography

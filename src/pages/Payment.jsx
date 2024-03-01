@@ -3,7 +3,7 @@ import PaymentCard from '../components/PaymentCard'
 
 function Payment() {
   return (
-    <div>
+    <div className='flex h-screen justify-center items-center'>
       <PaymentCard/>
     </div>
   )
