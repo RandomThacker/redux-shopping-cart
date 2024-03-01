@@ -41,14 +41,14 @@ body {
   background-color: $body-color;
 }
 
-// input,
-// button,
-// textarea {
-  // color: inherit;
-  // border: none;
-  // outline: none;
-  // font-family: inherit;
-//}
+input,
+button,
+textarea {
+  color: inherit;
+  border: none;
+  outline: none;
+  font-family: inherit;
+}
 
 button {
   cursor: pointer;
@@ -109,13 +109,13 @@ svg {
 }
 
 /*--====== Header Section ======--*/
-#header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 1rem 0;
-}
+// #header {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   padding: 1rem 0;
+// }
 
 .navbar {
   @include flex(space-between, center);

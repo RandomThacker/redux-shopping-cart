@@ -9,6 +9,7 @@ import store from "./store/store";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Payment from './pages/Payment';
 import { Form } from './components/Form';
+import OtpVerification from "./components/OtpVerification";
 
 
 const App = () => {
@@ -24,6 +25,8 @@ const App = () => {
               <Route path="/" element={<Home />} />
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/payment" element={<Payment />} />
+              <Route path="/otp" element={<OtpVerification/>} />
+
 
             </Routes>
             <Cart />
