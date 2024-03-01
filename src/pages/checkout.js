@@ -52,7 +52,9 @@ const Checkout = () => {
         <>
           <label>OTP</label>
           <input type="text" value={otp} onChange={handleOtpChange} />
-          <button onClick={handleVerifyOtp}>Verify OTP</button>
+          <button onClick={handleVerifyOtp} className="btn">
+            Verify OTP
+          </button>
         </>
       )}
 
@@ -64,7 +66,9 @@ const Checkout = () => {
       )}
 
       {isOtpVerified && (
-        <button onClick={handleProceedToPay}>Proceed to Pay</button>
+        <button onClick={handleProceedToPay} className="btn">
+          Proceed to Pay
+        </button>
       )}
     </div>
   );

@@ -2,12 +2,12 @@
 
 .checkout-container {
   max-width: 400px;
-  margin: auto;
-  margin-top: 70px;
+  position: relative;
+  margin: 20px auto;
+  margin-top: 80px; /* Added margin for the container */
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 5px;
-  text-align: center; /* Center the content */
 }
 
 label {
@@ -19,25 +19,13 @@ input,
 textarea {
   width: 100%;
   padding: 8px;
+  margin: 6px 0;
   margin-bottom: 10px;
-}
-
-/* OTP Input Styles */
-.otp-container {
-  display: flex;
-  justify-content: space-between;
-}
-
-.otp-box {
-  width: 20%;
-  background-color: grey;
-  text-align: center;
-  padding: 8px;
-  margin-bottom: 10px;
+  border: #000;
 }
 
 button {
-  background-color: #ff8c00; /* Orange color */
+  background-color: orange; /* Changed button color to orange */
   color: white;
   padding: 10px;
   border: none;
@@ -50,9 +38,41 @@ button:disabled {
   cursor: not-allowed;
 }
 
-/* Center the button */
-.button-container {
-  text-align: center;
-  border-radius: 20px;
-  margin-top: 20px;
+/* Styles for visibility and margin adjustments */
+.checkout-container h2 {
+  font-size: 2em;
+  border-left: 5px solid dodgerblue;
+  padding: 10px;
+  color: #000;
+  letter-spacing: 5px;
+  margin-bottom: 20px; /* Added margin for the top box */
+  font-weight: bold;
+  padding-left: 10px;
+}
+
+.checkout-container label {
+  margin-top: 10px; /* Added margin for the phone number box */
+}
+
+/* Styles for Input and Textarea */
+.checkout-container input,
+.checkout-container textarea {
+  display: block;
+  margin-top: 10px; /* Added margin for the phone number and text box */
+}
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: orange;
+  justify-content: center;
+  margin: 5px;
+  padding: 10px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.btn:hover {
+  background-color: #ff7f00; /* Darker shade of orange on hover */
 }
