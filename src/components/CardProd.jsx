@@ -134,7 +134,7 @@ import { addItem } from "../store/slices/cartSlice";
           </div>
           
         </CardBody>
-        <p className="font-bold">₹ {price}</p>
+        <p className="font-bold text-xl">₹ {price}</p>
         <CardFooter className="pt-3">
               
 
