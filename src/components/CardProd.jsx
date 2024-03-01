@@ -60,7 +60,7 @@ import { addItem } from "../store/slices/cartSlice";
         </CardHeader>
         <CardBody>
           <div className="mb-3 flex items-center justify-between">
-            <Typography variant="h5" color="blue-gray" className="font-bold text-base">
+            <Typography variant="h5" color="blue-gray" className="font-semibold text-base">
               {title}
             </Typography>
             <Typography
@@ -73,10 +73,10 @@ import { addItem } from "../store/slices/cartSlice";
   </Typography>
             
           </div>
-          <Typography color="gray">
+          <Typography color="gray" style={{margin:"10px 0"}} >
             {description}
           </Typography>
-          <div className="group mt-8 inline-flex flex-wrap items-center gap-3">
+          <div className="group inline-flex flex-wrap items-center gap-3">
             <Tooltip content="$129 per night">
               <span className="cursor-pointer rounded-full border border-gray-900/5 bg-gray-900/5 p-3 text-gray-900 transition-colors hover:border-gray-900/10 hover:bg-gray-900/10 hover:!opacity-100 group-hover:opacity-70">
                 <svg
@@ -130,9 +130,14 @@ import { addItem } from "../store/slices/cartSlice";
                 +20
               </span>
             </Tooltip>
+            
           </div>
+          
         </CardBody>
+        <p className="font-bold">₹ {price}</p>
         <CardFooter className="pt-3">
+              
+
           <Button size="lg" 
           fullWidth={true}
           className={`btn ${isAdded ? "added" : ""}`}

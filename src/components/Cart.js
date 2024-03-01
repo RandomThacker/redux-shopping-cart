@@ -99,9 +99,9 @@ const Cart = () => {
                       </div>
 
                       <div className="cart_items_quantity">
-                        <span onClick={() => handleIncrement(id)}>&#43;</span>
-                        <b>{quantity}</b>
                         <span onClick={() => handleDecrement(id)}>&#8722;</span>
+                        <b>{quantity}</b>
+                        <span onClick={() => handleIncrement(id)}>&#43;</span>
                       </div>
 
                       <div
@@ -126,6 +126,7 @@ const Cart = () => {
                 <button
                   type="button"
                   className="checkout_btn"
+                  style={{backgroundColor:"#FEA621", border:"1px solid white", color:"white"}}
                   disabled={cartQuantity === 0}
                 >
                   Checkout
