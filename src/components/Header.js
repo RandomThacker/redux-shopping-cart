@@ -16,10 +16,10 @@ const Header = () => {
 
   return (
     <>
-      <header id="header">
-        <div className="bg-red-500 h-24 px-10 py-5">
-          <div className="navbar">
-          <img src="https://www.krishihrudya.com/assets/images/logo/logo.png" alt="item-img" className="absolute" />
+      <header id="header" className="shadow-lg">
+        <div className="bg-white h-24 px-10 py-5">
+          <div className="relative flex justify-between">
+          <img src="https://www.krishihrudya.com/assets/images/logo/logo.png" alt="item-img" className="bg-white rounded-xl w-24" />
             
             <div className="nav_menu">
               <div
@@ -30,8 +30,8 @@ const Header = () => {
 
                 
 
-                <Badge content={cartQuantity}>
-                  <Button><img src="/images/bag-icon.svg" alt="bag-icon" /></Button>
+                <Badge content={cartQuantity} className="bg-black">
+                  <Button className="bg-[#fea621]"><img src="/images/bag-icon.svg" alt="bag-icon" /></Button>
                 </Badge>
               </div>
             </div>
