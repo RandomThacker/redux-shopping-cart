@@ -5,6 +5,8 @@ import Footer from './components/Footer';
 import Cart from './components/Cart';
 import { Provider } from 'react-redux';
 import store from './store/store';
+import Payment from './pages/Payment';
+import { Form } from './components/Form';
 
 
 const App = () => {
