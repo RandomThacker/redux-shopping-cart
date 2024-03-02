@@ -256,13 +256,21 @@ export default function PaymentCard() {
                 <Typography
                     variant="small"
                     color="blue-gray"
-                    className="mb-2 font-medium"
+                    className="mb-2 font-bold"
                   >
                     Scan the QR Code to Pay the amount
                   </Typography>
                  <img src="https://www.techopedia.com/wp-content/uploads/2023/03/aee977ce-f946-4451-8b9e-bba278ba5f13.png" style={{width:"200px"}} />
                 </div>
-                <Button size="lg">pay with paypal</Button>
+                <Typography
+                    variant="small"
+                    color="blue-gray"
+                    className="mb-2 font-bold"
+                  >
+                    Upload the screenshot after payment
+                  </Typography>
+                <input type="file" id="file-input" name="ImageStyle"/>
+                <Button size="lg">pay manually</Button>
                 <Typography
                   variant="small"
                   color="gray"
