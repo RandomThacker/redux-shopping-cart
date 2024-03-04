@@ -1,13 +1,22 @@
 import {
     Card,
     Input,
-    Checkbox,
     Button,
     Typography,
+    Dialog,
+  DialogHeader,
+  DialogBody,
+  DialogFooter,
   } from "@material-tailwind/react";
+  import React from "react";
+import OtpVerification from "./OtpVerification";
    
   export function AddressPage() {
+    const [open, setOpen] = React.useState(false);
+ 
+  const handleOpen = () => setOpen(!open);
     return (
+        <>
        <Card color="transparent" shadow={false}>
           <div className="text-transparent">-</div>
           <div className="text-transparent">-</div>
@@ -31,9 +40,11 @@ import {
               }}
             />
 
+              
             <Typography variant="h6" color="blue-gray" className="-mb-3">
               Phone Number
             </Typography>
+            <div className="flex gap-2">
             <Input
               size="lg"
               placeholder="name@mail.com"
@@ -42,6 +53,10 @@ import {
                 className: "before:content-none after:content-none",
               }}
             />
+            <Button onClick={handleOpen} variant="gradient">
+            verify
+          </Button>
+          </div>
 
              <Typography variant="h6" color="blue-gray" className="-mb-3">
              Pincode
@@ -117,11 +132,23 @@ import {
           </div>
         <div className="text-transparent">-</div>
           <Button className="mt-6" fullWidth>
-            checkout
+            pay now
           </Button>
           <div className="text-transparent">-</div>
           <div className="text-transparent">-</div>
         </form>
       </Card>
+       <Dialog open={open} handler={handleOpen} className="flex flex-col items-center">
+       <DialogHeader>Please enter the OTP</DialogHeader>
+       <DialogBody>
+         <OtpVerification/>
+       </DialogBody>
+       <DialogFooter>
+         <Button variant="gradient" color="green" fullWidth onClick={handleOpen}>
+           Confirm
+         </Button>
+       </DialogFooter>
+     </Dialog>
+     </>
     );
   }
