@@ -42,13 +42,12 @@ body {
   background-color: $body-color;
 }
 
-// input,
-// button,
-// textarea {
-//   border: none;
-//   outline: none;
-//   font-family: inherit;
-// }
+input,
+textarea {
+  border: 1px solid black;
+  outline: 2px;
+  font-family: inherit;
+}
 
 button {
   cursor: pointer;
