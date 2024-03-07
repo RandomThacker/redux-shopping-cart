@@ -61,6 +61,46 @@ app.get("/pay", (req, res) => {
     });
 });
 
+app.get("/redirect-url/:merchantTransactionId", (req, res)=>{
+  const {merchantTransactionId} = req.params
+  console.log("merchantTransactonId", merchantTransactionId);
+  if(merchantTransactionId){
+    const xVerify = sha256(`/pg/v1/status/${MERCHANT_ID}/${merchantTransactionId}` + SALT_KEY) + "###" + SALT_INDEX
+
+    const options = {
+  method: 'get',
+  url: `${PHONE_PE_HOST_URL}/pg/v1/status/${MERCHANT_ID}/${merchantTransactionId}`,
+  headers: {
+        accept: 'application/json',
+        'Content-Type': 'application/json',
+        "X-MERCHANT-ID": merchantTransactionId,
+        "X-VERIFY": xVerify
+				},
+
+};
+axios
+  .request(options)
+      .then(function (response) {
+        if (response.data && response.data.code === "PAYMENT_SUCCESS") {
+          // redirect to FE payment success status page
+          res.send(response.data);
+        }
+        else{
+          //redirect to error page.
+        }
+      console.log(response.data);
+  })
+  .catch(function (error) {
+    console.error(error);
+  });
+
+    // res.send({merchantTransactionId})
+  }
+  else
+    res.send("Error")
+  
+})
+
 app.listen(port, () => {
   console.log(`App is listening on port ${port}`);
 });
