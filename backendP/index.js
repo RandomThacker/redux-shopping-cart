@@ -22,7 +22,7 @@ app.get("/pay", (req, res) => {
     merchantId: MERCHANT_ID,
     merchantTransactionId: merchantTransactionId,
     merchantUserId: merchantUserId,
-    amount: 10000, //in paise
+    amount: 100*100, //in paise
     redirectUrl: `http://localhost:3003/redirect-url/${merchantTransactionId}`,
     redirectMode: "REDIRECT",
     // callbackUrl: "https://webhook.site/callback-url",

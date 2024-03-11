@@ -3,7 +3,7 @@ const axios = require("axios")
 const apiKey = "HYeql2aEZADn067fUtvjL8FzJ3TMWy1R5roPigGVsIBhOQpdwbdrTKlb2Rk4qO95LF8uNy7oj0XmxVfC"
 
 const message = "your otp is 1234"
-const phoneNumber = "7618771547"
+const phoneNumber = "9380329396"
 
 const smsData = {
     // sender_id: "FSTSMS",
