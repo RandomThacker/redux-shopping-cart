@@ -3,6 +3,7 @@ import OtpInput from 'react-otp-input';
 
 export default function OtpVerification() {
   const [otp, setOtp] = useState('');
+  console.log(otp);
 
   return (
     <div className='flex flex-col align-center justify-center items-center'>

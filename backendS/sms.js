@@ -1,23 +1,52 @@
-var unirest = require("unirest");
+const express = require("express");
+const cors = require("cors");
+const bodyParser = require("body-parser"); // Import body-parser
 
-var req = unirest("GET", "https://www.fast2sms.com/dev/bulkV2");
+const app = express();
+const apiKey =
+  "HYeql2aEZADn067fUtvjL8FzJ3TMWy1R5roPigGVsIBhOQpdwbdrTKlb2Rk4qO95LF8uNy7oj0XmxVfC";
 
-req.query({
-  "authorization": "HYeql2aEZADn067fUtvjL8FzJ3TMWy1R5roPigGVsIBhOQpdwbdrTKlb2Rk4qO95LF8uNy7oj0XmxVfC",
-  "message": "This is a test message",
-  "language": "english",
-  "route": "q",
-  "numbers": "9334092830",
+const axios = require("axios");
+
+// Use body-parser middleware to parse request bodies
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+// Configure CORS middleware
+app.use(cors({ origin: "http://localhost:3000" }));
+
+// Define your POST endpoint for handling SMS requests
+app.post("/sms", (req, res) => {
+  const phoneNumber = req.body.number;
+  const otp = req.body.otp;
+
+  const message = "your otp is" + otp;
+
+  const smsData = {
+    // sender_id: "FSTSMS",
+    message: message,
+    language: "english",
+    route: "q",
+    numbers: phoneNumber,
+  };
+
+  axios
+    .post("https://www.fast2sms.com/dev/bulkV2", smsData, {
+      headers: {
+        Authorization: apiKey,
+      },
+    })
+    .then((response) => {
+      console.log("SMS sent", response.data);
+    })
+    .catch((error) => {
+      console.log("error", error);
+    });
+
+  // Handle the SMS request here
 });
 
-req.headers({
-  "cache-control": "no-cache"
+// Start the server
+app.listen(8008, () => {
+  console.log("SMS service is listening on port 8008");
 });
-
-
-req.end(function (res) {
-  if (res.error) throw new Error(res.error);
-
-  console.log(res.body);
-});
-

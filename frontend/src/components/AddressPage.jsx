@@ -8,7 +8,6 @@ import {
   DialogBody,
   IconButton,
   MenuItem,
-
   DialogFooter,
 } from "@material-tailwind/react";
 import React, { useState } from "react";
@@ -18,9 +17,8 @@ import axios from "axios";
 export function AddressPage() {
   const [open, setOpen] = React.useState(false);
   const [open1, setOpen1] = React.useState(false);
- 
-  // const handleOpen1 = () => setOpen((cur) => !cur);
 
+  // State to store form values including OTP
   const [values, setValues] = useState({
     name: "",
     number: "",
@@ -30,15 +28,27 @@ export function AddressPage() {
     landmark: "",
     city: "",
     state: "",
+    otp: "", // Include OTP field in the state
   });
 
+  // Function to generate a random 4-digit OTP
+  const generateOTP = () => {
+    const genotp = Math.floor(1000 + Math.random() * 9000);
+    setValues({ ...values, otp: genotp.toString() }); // Update the OTP in state
+    console.log(genotp);
+  };
+
+  // Handle form input change
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
-  };  
+  };
 
+  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    setOpen1((cur) => !cur)
+    setOpen1((cur) => !cur);
+
+    // Send the form data including OTP to the backend
     axios.post("http://localhost:8000/address", values)
       .then(res => {
         console.log(JSON.stringify(res.data));
@@ -48,10 +58,34 @@ export function AddressPage() {
         alert("An error occurred. Please try again later.");
       });
   };
-  
-  
 
-  const handleOpen = () => setOpen(!open);
+ // Handle opening dialog and OTP generation
+const handleOpen = (e) => {
+  setOpen(!open);
+  e.preventDefault();
+  generateOTP(); // Generate OTP when "verify" button is clicked
+  
+  // Send OTP to backend after the state update is complete
+  setValues(prevValues => {
+    axios.post("http://localhost:8008/sms", { ...prevValues, otp: prevValues.otp }) 
+      .then(res => {
+        console.log(JSON.stringify(res.data));
+      })
+      .catch(err => {
+        console.error("Error:", err);
+        // alert("An error occurred. Please try again later.");
+      });
+    return prevValues;
+  });
+};
+
+  const handleOTP = ()=>{
+    console.log("otp verified");
+    setOpen(!open);
+
+  }
+
+
   return (
     <>
       <Card color="transparent" shadow={false}>
@@ -192,7 +226,7 @@ export function AddressPage() {
       </Card>
       <Dialog
         open={open}
-        handler={handleOpen}
+        handler={handleOTP}
         className="flex flex-col items-center"
       >
         <DialogHeader>Please enter the OTP</DialogHeader>
@@ -204,7 +238,7 @@ export function AddressPage() {
             variant="gradient"
             color="green"
             fullWidth
-            onClick={handleOpen}
+            onClick={handleOTP}
           >
             Confirm
           </Button>
