@@ -14,6 +14,7 @@ import React, { useState } from "react";
 // import OtpVerification from "./OtpVerification";
 import axios from "axios";
 import OtpInput from 'react-otp-input';
+import { Link } from "react-router-dom";
 
 function OtpVerification({ onOtpChange }) {
   const [otp, setOtp] = useState('');
@@ -207,7 +208,7 @@ const handleOTP = () => {
             />
 
             <Typography variant="h6" color="blue-gray" className="-mb-3">
-              Flat, House no., Building, Company, Apartment
+              Flat, House no., Building,
             </Typography>
             <Input
               size="lg"
@@ -362,6 +363,7 @@ const handleOTP = () => {
                   alt="metamast"
                   className="h-6 w-6 rounded-md"
                 />
+                  <Link to="/Payment">
                 <Typography
                   className="uppercase"
                   color="blue-gray"
@@ -369,6 +371,7 @@ const handleOTP = () => {
                 >
                   Pay using QR Code
                 </Typography>
+                </Link>
               </MenuItem>
               <Typography variant="small" color="gray" className="font-normal text-center">
             Pay using your UPI app and upload the screenshot!<br/>No tax levied :D
