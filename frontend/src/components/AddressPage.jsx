@@ -11,12 +11,56 @@ import {
   DialogFooter,
 } from "@material-tailwind/react";
 import React, { useState } from "react";
-import OtpVerification from "./OtpVerification";
+// import OtpVerification from "./OtpVerification";
 import axios from "axios";
+import OtpInput from 'react-otp-input';
 
+function OtpVerification({ onOtpChange }) {
+  const [otp, setOtp] = useState('');
+
+  // Function to handle OTP change
+  const handleOtpChange = (otp) => {
+    setOtp(otp);
+    onOtpChange(otp); // Call the function passed from the parent component
+  };
+
+  return (
+    <div className='flex flex-col align-center justify-center items-center'>
+      <OtpInput
+        value={otp}
+        onChange={handleOtpChange}
+        numInputs={4}
+        renderInput={(props) => <input {...props} />}
+        renderSeparator={<span style={{ width: "8px" }}></span>}
+        isInputNum={true}
+        shouldAutoFocus={true}
+        inputStyle={{
+          border: "1px solid black",
+          borderRadius: "8px",
+          width: "54px",
+          height: "54px",
+          fontSize: "12px",
+          color: "#000",
+          fontWeight: "400",
+          caretColor: "blue"
+        }}
+        focusStyle={{
+          border: "1px solid #CFD3DB",
+          outline: "none"
+        }}
+      />
+    </div>
+  );
+}
+
+// export default OtpVerification;
 export function AddressPage() {
   const [open, setOpen] = React.useState(false);
   const [open1, setOpen1] = React.useState(false);
+  const [otpValue, setOtpValue] = useState(''); // State to hold the OTP value
+  const handleOtpChange = (otp) => {
+    setOtpValue(otp);
+  };
 
   // State to store form values including OTP
   const [values, setValues] = useState({
@@ -59,32 +103,48 @@ export function AddressPage() {
       });
   };
 
- // Handle opening dialog and OTP generation
-const handleOpen = (e) => {
-  setOpen(!open);
-  e.preventDefault();
-  generateOTP(); // Generate OTP when "verify" button is clicked
-  
-  // Send OTP to backend after the state update is complete
-  setValues(prevValues => {
-    axios.post("http://localhost:8008/sms", { ...prevValues, otp: prevValues.otp }) 
-      .then(res => {
-        console.log(JSON.stringify(res.data));
-      })
-      .catch(err => {
-        console.error("Error:", err);
-        // alert("An error occurred. Please try again later.");
-      });
-    return prevValues;
-  });
-};
+  // Handle opening dialog and OTP generation
+  // const handleOpen = (e) => {
+  //   setOpen(!open);
+  //   e.preventDefault();
+  //   generateOTP(); // Generate OTP when "verify" button is clicked
+  // };
 
-  const handleOTP = ()=>{
-    console.log("otp verified");
+  const handleOpen = (e) => {
     setOpen(!open);
+    e.preventDefault();
+    generateOTP(); // Generate OTP when "verify" button is clicked
+    
+    // Send OTP to backend after the state update is complete
+    setValues(prevValues => {
+      axios.post("http://localhost:8008/sms", { ...prevValues, otp: prevValues.otp }) 
+        .then(res => {
+          console.log(JSON.stringify(res.data));
+        })
+        .catch(err => {
+          console.error("Error:", err);
+          // alert("An error occurred. Please try again later.");
+        });
+      return prevValues;
+    });
+  };
 
+
+
+
+
+
+  // Handle OTP confirmation
+ // Handle OTP confirmation
+const handleOTP = () => {
+  // Compare the randomly generated OTP (values.otp) with the user-entered OTP (otpValue)
+  if (values.otp === otpValue) {
+    console.log('OTP verified'); // Log if OTP is verified
+  } else {
+    console.log('OTP Not verified'); // Log if OTP is not verified
   }
-
+  setOpen(false); // Close the dialog
+};
 
   return (
     <>
@@ -231,7 +291,7 @@ const handleOpen = (e) => {
       >
         <DialogHeader>Please enter the OTP</DialogHeader>
         <DialogBody>
-          <OtpVerification />
+          <OtpVerification onOtpChange={handleOtpChange} />
         </DialogBody>
         <DialogFooter>
           <Button
