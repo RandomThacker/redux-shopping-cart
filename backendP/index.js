@@ -4,6 +4,19 @@ const app = express();
 const uniqid = require("uniqid");
 const axios = require("axios");
 const sha256 = require("sha256");
+const bodyParser = require("body-parser"); // Import body-parser
+const cors = require("cors");
+
+let idFromPayData;
+let amountFromPayData;
+
+// Use body-parser middleware to parse request bodies
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+// Configure CORS middleware
+app.use(cors({ origin: "http://localhost:3000" }));
+
 
 const PHONE_PE_HOST_URL = "https://api-preprod.phonepe.com/apis/pg-sandbox";
 const MERCHANT_ID = "PGTESTPAYUAT";
@@ -14,15 +27,25 @@ app.get("/", (req, res) => {
   res.send("PhonePe is working");
 });
 
+app.post("/paydata", (req, res) => {
+  const id = req.body.id;
+  const amount = req.body.amount;
+  idFromPayData = id;
+  amountFromPayData = amount;
+  console.log("ID:", id);
+  console.log("Amount:", amount);
+  // Rest of your code for handling payment
+});
+
 app.get("/pay", (req, res) => {
   const payEndpoint = "/pg/v1/pay";
   const merchantTransactionId = uniqid();
-  const merchantUserId = 1234;
+  const merchantUserId = idFromPayData;
   const payload = {
     merchantId: MERCHANT_ID,
     merchantTransactionId: merchantTransactionId,
     merchantUserId: merchantUserId,
-    amount: 100*100, //in paise
+    amount: amountFromPayData*100, //in paise
     redirectUrl: `http://localhost:3003/redirect-url/${merchantTransactionId}`,
     redirectMode: "REDIRECT",
     // callbackUrl: "https://webhook.site/callback-url",

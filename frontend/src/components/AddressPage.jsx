@@ -13,11 +13,11 @@ import {
 import React, { useState } from "react";
 // import OtpVerification from "./OtpVerification";
 import axios from "axios";
-import OtpInput from 'react-otp-input';
+import OtpInput from "react-otp-input";
 import { Link } from "react-router-dom";
 
 function OtpVerification({ onOtpChange }) {
-  const [otp, setOtp] = useState('');
+  const [otp, setOtp] = useState("");
 
   // Function to handle OTP change
   const handleOtpChange = (otp) => {
@@ -26,7 +26,7 @@ function OtpVerification({ onOtpChange }) {
   };
 
   return (
-    <div className='flex flex-col align-center justify-center items-center'>
+    <div className="flex flex-col align-center justify-center items-center">
       <OtpInput
         value={otp}
         onChange={handleOtpChange}
@@ -43,11 +43,11 @@ function OtpVerification({ onOtpChange }) {
           fontSize: "12px",
           color: "#000",
           fontWeight: "400",
-          caretColor: "blue"
+          caretColor: "blue",
         }}
         focusStyle={{
           border: "1px solid #CFD3DB",
-          outline: "none"
+          outline: "none",
         }}
       />
     </div>
@@ -58,7 +58,7 @@ function OtpVerification({ onOtpChange }) {
 export function AddressPage() {
   const [open, setOpen] = React.useState(false);
   const [open1, setOpen1] = React.useState(false);
-  const [otpValue, setOtpValue] = useState(''); // State to hold the OTP value
+  const [otpValue, setOtpValue] = useState(""); // State to hold the OTP value
   const handleOtpChange = (otp) => {
     setOtpValue(otp);
   };
@@ -94,35 +94,33 @@ export function AddressPage() {
     setOpen1((cur) => !cur);
 
     // Send the form data including OTP to the backend
-    axios.post("http://localhost:8000/address", values)
-      .then(res => {
+    axios
+      .post("http://localhost:8000/address", values)
+      .then((res) => {
         console.log(JSON.stringify(res.data));
       })
-      .catch(err => {
+      .catch((err) => {
         console.error("Error:", err);
-        alert("An error occurred. Please try again later.");
+        // alert("An error occurred. Please try again later.");
       });
   };
-
-  // Handle opening dialog and OTP generation
-  // const handleOpen = (e) => {
-  //   setOpen(!open);
-  //   e.preventDefault();
-  //   generateOTP(); // Generate OTP when "verify" button is clicked
-  // };
 
   const handleOpen = (e) => {
     setOpen(!open);
     e.preventDefault();
     generateOTP(); // Generate OTP when "verify" button is clicked
-    
+
     // Send OTP to backend after the state update is complete
-    setValues(prevValues => {
-      axios.post("http://localhost:8008/sms", { ...prevValues, otp: prevValues.otp }) 
-        .then(res => {
+    setValues((prevValues) => {
+      axios
+        .post("http://localhost:8008/sms", {
+          ...prevValues,
+          otp: prevValues.otp,
+        })
+        .then((res) => {
           console.log(JSON.stringify(res.data));
         })
-        .catch(err => {
+        .catch((err) => {
           console.error("Error:", err);
           // alert("An error occurred. Please try again later.");
         });
@@ -130,22 +128,39 @@ export function AddressPage() {
     });
   };
 
-
-
-
-
+  const handlePhonepe = () => {
+    const amount = 1100; // Set a constant amount value
+    const id = "K" + Math.floor(1000000000000000 + Math.random() * 9000000000000000); // Set a constant Id with "K" prefix and 16 random digits
+    
+    // Send amount and id to backend
+    axios
+      .post("http://localhost:3003/paydata", {
+        amount: amount,
+        id: id,
+      })
+      .then((res) => {
+        console.log("Response:", res.data);
+  
+        // Redirect to localhost:3000/pay
+        // window.location.href = "http://localhost:3003/pay";
+      })
+      .catch((err) => {
+        console.error("Error:", err);
+        // Handle error
+      });
+  };
 
   // Handle OTP confirmation
- // Handle OTP confirmation
-const handleOTP = () => {
-  // Compare the randomly generated OTP (values.otp) with the user-entered OTP (otpValue)
-  if (values.otp === otpValue) {
-    console.log('OTP verified'); // Log if OTP is verified
-  } else {
-    console.log('OTP Not verified'); // Log if OTP is not verified
-  }
-  setOpen(false); // Close the dialog
-};
+  // Handle OTP confirmation
+  const handleOTP = () => {
+    // Compare the randomly generated OTP (values.otp) with the user-entered OTP (otpValue)
+    if (values.otp === otpValue) {
+      console.log("OTP verified"); // Log if OTP is verified
+    } else {
+      console.log("OTP Not verified"); // Log if OTP is not verified
+    }
+    setOpen(false); // Close the dialog
+  };
 
   return (
     <>
@@ -311,7 +326,6 @@ const handleOTP = () => {
             <Typography variant="h5" color="blue-gray" className="text-center">
               Choose a Payment Menthod
             </Typography>
-            
           </div>
           <IconButton
             color="blue-gray"
@@ -337,7 +351,6 @@ const handleOTP = () => {
         </DialogHeader>
         <DialogBody className="overflow-y-scroll !px-5">
           <div className="mb-6">
-          
             <ul className="mt-3 -ml-2 flex flex-col gap-1">
               <MenuItem className="mb-4 flex items-center justify-center gap-3 !py-4 shadow-md">
                 <img
@@ -349,38 +362,47 @@ const handleOTP = () => {
                   className="uppercase"
                   color="blue-gray"
                   variant="h6"
+                  onClick={handlePhonepe}
                 >
                   Pay using PhonePe
                 </Typography>
               </MenuItem>
-              <Typography variant="small" color="gray" className="font-normal text-center">
-           1.8% tax will be levied on the total amount
-          </Typography>
-          <br></br>
+              <Typography
+                variant="small"
+                color="gray"
+                className="font-normal text-center"
+              >
+                1.8% tax will be levied on the total amount
+              </Typography>
+              <br></br>
               <MenuItem className="mb-1 flex items-center justify-center gap-3 !py-4 shadow-md">
                 <img
                   src="https://static-00.iconduck.com/assets.00/qr-scan-icon-2048x2048-aeh36n7y.png"
                   alt="metamast"
                   className="h-6 w-6 rounded-md"
                 />
-                  <Link to="/Payment">
-                <Typography
-                  className="uppercase"
-                  color="blue-gray"
-                  variant="h6"
-                >
-                  Pay using QR Code
-                </Typography>
+                <Link to="/Payment">
+                  <Typography
+                    className="uppercase"
+                    color="blue-gray"
+                    variant="h6"
+                  >
+                    Pay using QR Code
+                  </Typography>
                 </Link>
               </MenuItem>
-              <Typography variant="small" color="gray" className="font-normal text-center">
-            Pay using your UPI app and upload the screenshot!<br/>No tax levied :D
-          </Typography>
+              <Typography
+                variant="small"
+                color="gray"
+                className="font-normal text-center"
+              >
+                Pay using your UPI app and upload the screenshot!
+                <br />
+                No tax levied :D
+              </Typography>
             </ul>
           </div>
-          
         </DialogBody>
-        
       </Dialog>
     </>
   );
